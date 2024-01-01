@@ -1,0 +1,41 @@
+Given an array of integers nums and a number k, write a function that returns true if given array can be divided into pairs such that sum of every pair is divisible by k.
+
+Example 1 :
+
+Input : 
+nums = [9, 5, 7, 3]
+k = 6
+Output: 
+True
+Explanation: 
+{(9, 3), (5, 7)} is a 
+possible solution. 9 + 3 = 12 is divisible
+by 6 and 7 + 5 = 12 is also divisible by 6.
+
+
+
+
+Explanation:
+
+1. Function Declaration:
+   - The function `canPair` is a member function of the `Solution` class.
+   - It takes in two parameters: a vector of integers `nums` and an integer `k`.
+   - It returns a boolean value indicating whether the given array can be divided into pairs such that the sum of each pair is divisible by `k`.
+
+2. Checking for Odd Array Size:
+   - The code first checks if the size of the `nums` array is odd (`nums.size() % 2 == 1`). If it's odd, the function immediately returns `false` because an odd-sized array cannot form pairs.
+
+3. Counting Remainders:
+   - The code initializes a vector `arr` of size `k` to store counts of remainders when elements in `nums` are divided by `k`.
+   - It then iterates through the `nums` array and increments the count of the remainder (`nums[i] % k`) in the `arr` vector.
+
+4. Checking Counts and Their Complements:
+   - After counting the remainders, the code initializes `i` and `j` to 1 and `k - 1` respectively.
+   - It first checks if the count of remainder 0 (`arr[0]`) is odd (`arr[0] % 2`). If it's odd, indicating an odd count of divisible pairs, it returns `false`.
+   - Then, it enters a loop where it checks the counts of remainders (`arr[i]`) and their complements (`arr[j]`) from both ends.
+   - The loop continues until `i` is less than or equal to `j`. If at any point the counts of different remainders are unequal, it returns `false`.
+
+5. Returning the Result:
+   - If all counts in the `arr` vector are equal, indicating that pairs can be formed, the function reaches the end and returns `true`.
+
+Overall, this implementation determines if pairs can be formed within the array such that the sum of each pair is divisible by `k`. It has an expected time complexity of O(n) and space complexity of O(k) due to the usage of the `arr` vector of size `k` to store remainder counts.
