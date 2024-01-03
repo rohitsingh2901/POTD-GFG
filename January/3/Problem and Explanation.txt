@@ -1,0 +1,43 @@
+Smallest window containing 0, 1 and 2
+
+Given a string S consisting of the characters 0, 1 and 2. Your task is to find the length of the smallest substring of string S that contains all the three characters 0, 1 and 2. If no such substring exists, then return -1.
+
+Example 1:
+
+Input:
+S = 10212
+Output:
+3
+Explanation:
+The substring 102 is the smallest substring
+that contains the characters 0, 1 and 2.
+
+
+Expected Time Complexity: O( length( S ) )
+Expected Auxiliary Space: O(1)
+
+Constraints:
+1 ≤ length( S ) ≤ 105
+All the characters of String S lies in the set {'0', '1', '2'}
+
+
+
+Explanation:
+
+1. `z`, `o`, and `t` represent the indices of the most recent occurrences of '0', '1', and '2', respectively. They are initialized as -1 to signify that these characters haven't been encountered yet.
+
+2. `n` stores the length of the input string `S`.
+
+3. `ans` is initialized to `INT_MAX` to store the minimum length of the substring containing all three characters '0', '1', and '2'.
+
+4. The loop iterates through each character of the string `S`:
+
+    a. Based on the character encountered, the corresponding index (`z`, `o`, or `t`) is updated.
+    
+    b. If all three characters '0', '1', and '2' have been found at least once (`z != -1`, `o != -1`, and `t != -1` are all true), it calculates the length of the substring containing all three characters from the earliest occurrence to the current index (`i + 1 - min(z, min(o, t))`).
+
+    c. It updates `ans` with the minimum of the current `ans` and the calculated substring length.
+
+5. Finally, it returns `ans` as the minimum length found. If no valid substring containing all three characters is found, it returns -1.
+
+This approach effectively traverses the string once, updating the indices for each character encountered and calculating the minimum length of the substring whenever all three characters '0', '1', and '2' have been found at least once. It utilizes the most recent occurrences of these characters to determine the substring length, providing an efficient solution to find the smallest substring containing all three characters in the given string `S`.
