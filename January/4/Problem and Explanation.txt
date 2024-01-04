@@ -1,0 +1,58 @@
+Find element occuring once when all other are present thrice
+
+Given an array of integers arr[] of length N, every element appears thrice except for one which occurs once.
+Find that element which occurs once.
+
+Example 1:
+
+Input:
+N = 4
+arr[] = {1, 10, 1, 1}
+Output:
+10
+Explanation:
+10 occurs once in the array while the other
+element 1 occurs thrice.
+
+
+Constraints:
+1 ≤ N ≤ 105
+-109 ≤ A[i] ≤ 109
+
+Expected Time Complexity: O(N).
+Expected Auxiliary Space: O(1).
+
+
+
+
+Explanation:
+
+1. Initialization: The function `singleElement` takes an array `arr` of integers and its size `N` as parameters.
+
+2. Variable Initialization: `res` is initialized to 0. This variable will hold the result, which will contain the bits representing the single occurring element.
+
+3. Outer Loop (Bits 0 to 31): The function iterates through each bit position from 0 to 31 (inclusive). This loop is used to check each bit position in the array elements since an integer typically has 32 bits.
+
+4. Inner Loop (Array Elements): For each bit position `i`, the function goes through all elements of the array in the inner loop `for (int j = 0; j < N; j++)`. For each element `arr[j]`, it checks if the `i`-th bit is set (1) or not (0) using the expression `(arr[j] & (1 << i))`. If the `i`-th bit is set for the `j`-th element, it increments the `ans` counter.
+
+5. Counting Set Bits: The `ans` variable counts the number of elements where the `i`-th bit is set among the array elements.
+
+6. Check for Single Occurrence: If the count `ans` modulo 3 is equal to 1 (`if (ans % 3 == 1)`), it means that the single occurring element has a set bit at position `i`. Therefore, the bit at position `i` in the `res` variable is set using bitwise left shift `(1 << i)` and added to the result.
+
+7. Final Result: After iterating through all bit positions (from 0 to 31), the `res` variable holds the bitwise representation of the single occurring element.
+
+8. Return: The function returns the final result, which represents the integer containing the bits of the element that occurs only once in the array.
+
+
+
+
+
+
+Visualization:
+................. 0 0 0 1
+................. 0 0 0 1
+................. 0 0 0 1
+................. 1 0 1 0
+
+Count Number of set bit (x) = 1 0 1 3
+Now take every bit of x%3  = 1 0 1 0 (Ans)
