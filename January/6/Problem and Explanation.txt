@@ -1,0 +1,98 @@
+Techfest and the Queue
+MediumAccuracy: 54.34%Submissions: 20K+Points: 4
+90% Refund available on all premium courses 
+Discover How  
+
+banner
+A Techfest is underway, and each participant is given a ticket with a unique number. Organizers decide to award prize points to everyone who has a ticket ID between a and b (inclusive). The points given to a participant with ticket number x will be the sum of powers of the prime factors of x.
+
+For instance, if points are to be awarded to a participant with ticket number 12, the amount of points given out will be equal to the sum of powers in the prime factorization of 12 (22 × 31), which will be 2 + 1 = 3.
+
+Given a and b, determine the sum of all the points that will be awarded to the participants with ticket numbers between a and b (inclusive).
+
+Example 1:
+
+Input: 
+a = 9
+b = 12
+Output: 
+8
+Explanation: 
+For 9, prime factorization is:32 
+So, sum of the powers of primes is: 2
+For 10, prime factorization is : 21x51 
+So, sum of the powers of primes is: 2
+For 11, prime factorization is : 111 
+So, sum of the powers of primes is: 1
+For 12, prime factorization is : 22x 31 
+So, sum of powers of primes is: 3
+Therefore the total sum is 2+2+1+3=8.
+
+
+Expected Time Complexity: O( b*log(b) )
+Expected Space Complexity: O( b*log(b) )
+
+Constraints:
+1 <= a <= b <= 2x105
+1 <= b-a <= 105
+
+
+
+
+
+Explanation:
+Brute force
+1. Prime Factorization Function (PF) ("int PF(int n)"):
+    - This function takes an integer "n" and calculates the sum of powers of its prime factors.
+    - It initializes "sumOfPower" as 0 and iterates through 2 and odd numbers up to the square root of "n".
+    - For each divisor found, it increments "sumOfPower" by 1 for every occurrence of the divisor.
+    - Finally, if "n" is greater than 2 (indicating a prime number), it increments "sumOfPower" by 1.
+    - It returns the total sum of powers of prime factors for the number "n".
+
+2. sumOfPowers Function ("int sumOfPowers(int a, int b)"):
+    - This function calculates the sum of powers of prime factors for all numbers in the range "[a, b]".
+    - It initializes "ans" as 0 to accumulate the total sum of powers.
+    - It iterates through each number from "a" to "b" and adds the sum of powers of its prime factors by calling the "PF" function.
+    - Finally, it returns the accumulated sum of powers for all numbers in the range "[a, b]".
+
+Overall, the provided code works by computing the sum of powers of prime factors for each number in the given range by iterating through the range and using the "PF" function to calculate the sum of powers of prime factors for each individual number.
+
+However, while this approach provides a solution, its time complexity = O((b - a) * sqrt(b)).
+
+
+
+Optimized solution:
+
+The provided C++ code defines a class "Solution" with two functions "sieve" and "sumOfPowers". The "main" function takes input for the number of test cases and the range "[a, b]" for each test case and computes the sum of powers of prime factors for numbers in that range.
+
+Here's a detailed explanation of the code:
+
+ "sieve" function:
+This function generates all prime numbers up to "n" using the Sieve of Eratosthenes algorithm. It creates a boolean array "isPrime" of size "n + 1" to mark numbers as prime or non-prime.
+- It initializes "isPrime" with "true" for all indices.
+- Starting from 2, it iterates through the numbers up to the square root of "n".
+    - If the current number ("p") is marked as prime ("isPrime[p]" is "true"), it marks all multiples of "p" starting from "p*p" as non-prime.
+- Finally, it collects all the prime numbers by checking the boolean array "isPrime" and stores them in the "primes" vector, returning the vector containing all primes up to "n".
+
+ "primeFactorization" function:
+This function calculates the sum of powers of prime factors for a given number "num" using the pre-generated list of primes.
+- It initializes "total" as 0 to store the total sum of powers.
+- It iterates through the list of primes and checks if the square of the current prime is greater than "num". If so, it breaks the loop because the number "num" cannot have any prime factors greater than its square root.
+- For each prime factor in the list, it checks if it divides "num".
+    - If it does, it counts how many times that prime factor divides "num" by repeatedly dividing "num" by that factor until it doesn't divide anymore, incrementing the "total" count each time.
+- After processing all prime factors, if "num" is still greater than 1, it means "num" itself is a prime number, so it increments "total" by 1.
+- Finally, it returns the total sum of powers of prime factors for the number "num".
+
+ "sumOfPowers" function:
+This function computes the total sum of powers of prime factors for all numbers in the range "[a, b]".
+- It initializes "totalSum" as 0 to accumulate the total sum of powers.
+- It generates a list of primes up to "b" using the "sieve" function.
+- It iterates through each number from "a" to "b" and adds the sum of powers of its prime factors by calling the "primeFactorization" function.
+- It returns the accumulated sum of powers for all numbers in the range "[a, b]".
+
+ "main" function:
+- It takes input for the number of test cases ("tc").
+- For each test case, it takes input for the range "[a, b]".
+- It creates an object of class "Solution" and calls the "sumOfPowers" function with the input range "[a, b]".
+- Finally, it prints the computed sum of powers for each test case.
+
