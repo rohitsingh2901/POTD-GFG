@@ -1,0 +1,55 @@
+Split Array Largest Sum
+Given an array arr[] of N elements and a number K., split the given array into K subarrays such that the maximum subarray sum achievable out of K subarrays formed is minimum possible. Find that possible subarray sum.
+
+Example 1:
+
+Input:
+N = 4, K = 3
+arr[] = {1, 2, 3, 4}
+Output: 4
+Explanation:
+Optimal Split is {1, 2}, {3}, {4}.
+Maximum sum of all subarrays is 4,
+which is minimum possible for 3 splits. 
+Example 2:
+
+Input:
+N = 3, K = 2
+A[] = {1, 1, 2}
+Output:
+2
+Explanation:
+Splitting the array as {1,1} and {2} is optimal.
+This results in a maximum sum subarray of 2.
+Your Task:
+You do not have to take any input or print anything. The task is to complete the function splitArray() which returns the maximum sum subarray after splitting the array into K subarrays such that maximum sum subarray is minimum possible.
+
+Expected Time Complexity: O(N*log(sum(arr))).
+Expected Auxiliary Space: O(1).
+
+Constraints:
+1 ≤ N ≤ 105
+1 ≤ K ≤ N
+1 ≤ arr[i] ≤ 104
+
+
+
+
+
+Explanation:
+
+- The "check" function takes in the "mid" value (potential maximum subarray sum), the array "arr", its length "N", and the number of subarrays "K" as parameters.
+- It iterates through the array elements and counts how many subarrays are needed to satisfy the condition that no subarray has a sum greater than "mid".
+- It returns "true" if the number of subarrays required is less than or equal to "K", indicating that the "mid" value is a valid candidate for the minimum possible maximum subarray sum achievable within the constraints.
+
+Explanation of "splitArray" function:
+- The "splitArray" function uses a binary search approach to find the minimum possible maximum subarray sum achievable after splitting the array into "K" subarrays.
+- It initializes "low" with the maximum element in the array ("*max_element" finds the maximum element in the given range).
+- It initializes "high" by summing up all elements in the array, giving an upper bound for the maximum subarray sum.
+- The binary search is performed within the range of "low" to "high".
+- For each iteration, it checks if the "mid" value is a valid candidate for the minimum maximum subarray sum using the "check" function.
+- If "mid" is a valid solution, it updates "ans" and adjusts the range to explore smaller values ("high = mid - 1").
+- If "mid" is not a valid solution, it adjusts the range to explore larger values ("low = mid + 1").
+- Finally, it returns the minimum possible maximum subarray sum achievable ("ans").
+
+
