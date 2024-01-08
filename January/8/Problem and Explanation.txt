@@ -1,0 +1,67 @@
+Merge 2 sorted linked list in reverse order
+
+Given two linked lists of size N and M, which are sorted in non-decreasing order. The task is to merge them in such a way that the resulting list is in non-increasing order.
+
+Example 1:
+
+Input:
+N = 2, M = 2
+list1 = 1->3
+list2 = 2->4
+Output:
+4->3->2->1
+Explanation:
+After merging the two lists in non-increasing order, we have new lists as 4->3->2->1.
+Example 2:
+
+Input:
+N = 4, M = 3
+list1 = 5->10->15->40 
+list2 = 2->3->20
+Output:
+40->20->15->10->5->3->2
+Explanation:
+After merging the two lists in non-increasing order, we have new lists as 40->20->15->10->5->3->2.
+Your Task:
+The task is to complete the function mergeResult() which takes reference to the heads of both linked list and returns the pointer to the merged linked list.
+
+Expected Time Complexity : O(N+M)
+Expected Auxiliary Space : O(1)
+
+Constraints:
+0 <= N, M <= 104
+
+
+
+Explanation:
+
+ "mergeResult" Function:
+This function takes in two linked list heads ("node1" and "node2") as input and merges these linked lists into one while maintaining non-increasing order.
+
+- Initialization:
+  - "p1" and "p2" are pointers initialized to the heads of the input linked lists "node1" and "node2", respectively.
+  - "dummy" is a new node created to hold the merged list. It's used as a placeholder, allowing the creation of the merged list without an initial value.
+
+- Merging Process:
+  - A "while" loop traverses through both linked lists ("p1" and "p2") until either of them becomes "NULL".
+  - Within the loop, it compares the data of the current nodes pointed to by "p1" and "p2". It appends the node with greater or equal value to the "ans" (result) list, and moves the respective pointer ("p1" or "p2") forward.
+  - If "p1->data >= p2->data", "p1" is appended to the result list; otherwise, "p2" is appended.
+  - The "ans" pointer is moved to the newly appended node in each iteration.
+
+- Appending Remaining Nodes:
+  - Two separate "while" loops handle the remaining elements in either "p1" or "p2". If there are any remaining nodes in either list, they are appended to the end of the merged list.
+
+- Cleanup and Reverse:
+  - Once the merging is complete, "merged" points to the merged list starting from the next node of "dummy".
+  - The "dummy" node (which was used as a placeholder) is deleted to prevent memory leaks.
+  - The "reverse()" function is called to reverse the merged list and the resulting reversed list's head is returned.
+
+ "reverse" Function:
+This function reverses a given linked list and returns the new head of the reversed list.
+
+- Reversal Process:
+  - It takes the head of the linked list ("head") as input.
+  - Three pointers ("prev", "curr", and "nextNode") are used to reverse the list iteratively.
+  - The "while" loop iterates through the list, changing the "next" pointers to reverse the links.
+  - At the end of the loop, the "prev" pointer will be pointing to the new head of the reversed list.
+  - The function returns this new head.
