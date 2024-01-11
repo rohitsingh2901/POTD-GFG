@@ -1,0 +1,97 @@
+Remove K Digits
+
+Given a non-negative integer S represented as a string, remove K digits from the number so that the new number is the smallest possible.
+Note : The given num does not contain any leading zero.
+
+Example 1:
+
+Input:
+S = "149811", K = 3
+Output: 
+111
+Explanation: 
+Remove the three digits 
+4, 9, and 8 to form the new number 111
+which is smallest.
+Example 2:
+
+Input:
+S = "1002991", K = 3
+Output: 
+21
+Explanation: 
+Remove the three digits 1(leading
+one), 9, and 9 to form the new number 21(Note
+that the output must not contain leading
+zeroes) which is the smallest.
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function removeKdigits() which takes the string S and an integer K as input and returns the new number which is the smallest possible.
+
+Expected Time Complexity: O(|S|).
+Expected Auxiliary Space: O(|S|).
+
+Constraints:
+1<= K <= |S|<=106
+
+
+
+Explanation:
+
+1. Check if all digits need to be removed:
+   
+   if (k == S.size()) return "0";
+   
+   If `k` is equal to the size of the input string `S`, it means all digits need to be removed. In this case, return "0" since the result should not contain any digits.
+
+2. Iterate through each digit in the input string:
+   
+   for (int i = 0; i < S.size(); i++) {
+      
+   }
+   
+   This loop processes each digit in the input string `S`.
+
+3. Remove digits to minimize the number:
+   
+   while (str.size() > 0 && k > 0 && str.back() > S[i]) {
+       str.pop_back();
+       k--;
+   }
+   
+   While the stack `str` is not empty, there are still digits to be removed (`k > 0`), and the last digit in the stack is greater than the current digit in `S`, remove digits from the stack until the conditions are satisfied.
+
+4. Append current digit to the stack:
+   
+   str += S[i];
+   
+   After the removal loop, add the current digit from `S` to the stack.
+
+5. Remove any remaining digits if needed:
+   
+   while (k > 0 && str.size() > 0) {
+       str.pop_back();
+       k--;
+   }
+   
+   If there are still remaining digits to be removed (`k > 0`), remove digits from the end of the stack.
+
+6. Remove leading zeros:
+   
+   int i = 0;
+   while (str[i] == '0' && i < str.size()) {
+       i++;
+   }
+   
+   Iterate through the stack to find the index `i` where non-zero digits start.
+
+7. Handle the case where the result is "0":
+   
+   if (i == str.size()) return "0";
+   
+   If all digits in the stack are zeros, return "0".
+
+8. Return the final result:
+   
+   return str.substr(i);
+   
+   Return the substring of the stack starting from index `i`. This is the smallest possible number after removing `k` digits and leading zeros.
