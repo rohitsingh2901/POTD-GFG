@@ -1,0 +1,60 @@
+Grinding Geek
+
+GeeksforGeeks has introduced a special offer where you can enroll in any course, and if you manage to complete 90% of the course within 90 days, you will receive a refund of 90%.
+
+Geek was fascinated by this offer. This offer was valid for only n days, and each day a new course was available for purchase. Geek decided that if he bought a course on some day, he will complete that course on the same day itself and redeem floor[90% of cost of the course] amount back. Find the maximum number of courses that Geek can complete in those n days if he had total amount initially.
+
+Note: On any day, Geek can only buy the new course that was made available for purchase that day.
+
+Example 1:
+
+Input:
+n = 2
+total = 10
+cost = [10, 9]
+Output: 2
+Explanation: 
+Geek can buy the first course for 10 amount, 
+complete it on the same date and redeem 9 back. 
+Next, he can buy and complete the 2nd course too.
+Example 2:
+
+Input:
+n = 11
+total = 10
+cost = [10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Output: 10
+Explanation: 
+Geek can buy and complete all the courses that cost 1.
+Your Task:
+This is a function problem. The input is already taken care of by the driver code. You only need to complete the function max_courses() that takes N the number of days, the total amount, and the cost array as input argument and return the maximum amount of courses that could be purchased.
+
+Expected Time Complexity: O(n*total)
+Expected Auxiliary Space: O(n*total)
+
+Constraints:
+1 <= n <= 1000
+0 <= total <= 1000
+1 <= cost[i] <= 1000
+
+
+
+Explanation:
+
+1. The "help" function is a recursive helper function that calculates the maximum number of courses that can be completed, starting from the given index "ind" and with the given remaining total "total".
+
+2. The base case checks if we have reached the end of the courses ("ind == n"). In that case, return 0 as no more courses can be completed.
+
+3. Memoization is used to avoid redundant calculations. If the result for the current state (ind, total) is already calculated, return it.
+
+4. If the remaining total is less than the cost of the current course, skip buying the current course and move to the next one.
+
+5. If the remaining total is sufficient to buy the current course, calculate the remaining total after buying the course with a 10% refund.
+
+6. Calculate the maximum number of courses by either buying the current course or skipping it.
+
+7. Update the memoization table with the result for the current state and return the result.
+
+8. The "max_courses" function initializes the memoization table and calls the "help" function with the initial parameters.
+
+This code uses a top-down dynamic programming approach with memoization to optimize the recursive solution. The time complexity is determined by the number of unique states, and the auxiliary space complexity is O(n * total) for the memoization table.
