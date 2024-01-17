@@ -1,0 +1,70 @@
+All Unique Permutations of an array
+
+Given an array arr[] of length n. Find all possible unique permutations of the array in sorted order. A sequence A is greater than sequence B if there is an index i for which Aj = Bj for all j<i and Ai > Bi.
+
+Example 1:
+
+Input: 
+n = 3
+arr[] = {1, 2, 1}
+Output: 
+1 1 2
+1 2 1
+2 1 1
+Explanation:
+These are the only possible unique permutations
+for the given array.
+Example 2:
+
+Input: 
+n = 2
+arr[] = {4, 5}
+Output: 
+Only possible 2 unique permutations are
+4 5
+5 4
+Your Task:
+You don't need to read input or print anything. You only need to complete the function uniquePerms() that takes an integer n, and an array arr of size n as input and returns a sorted list of lists containing all unique permutations of the array.
+
+Expected Time Complexity:  O(n*n!)
+Expected Auxilliary Space: O(n*n!)
+
+Constraints:
+1 ≤ n ≤ 9
+1 ≤ arri ≤ 10
+
+Explaination:
+
+ "solve" Function:
+
+The "solve" function is a recursive function that generates all unique permutations of the given array "arr". It uses backtracking to explore all possible combinations and adds them to a set "s" to avoid duplicates. Here's a breakdown of the function:
+
+- Parameters:
+  - "vector<int> &arr": The reference to the array whose permutations need to be generated.
+  - "int index": The current index in the array.
+  - "set<vector<int>>& s": The set to store unique permutations.
+
+- Base Case:
+  - If "index" is equal to the size of the array ("arr.size()"), it means a complete permutation has been generated. At this point, the current permutation is inserted into the set "s".
+
+- Recursive Step:
+  - The function uses a "for" loop to iterate from the current index ("index") to the end of the array ("arr.size()").
+  - Inside the loop, it swaps the elements at the current index ("index") and the loop variable "i". This is done to explore different permutations.
+  - The "solve" function is then called recursively with the updated array and the next index ("index + 1").
+  - After the recursive call, the elements are swapped back to their original positions to backtrack and explore other permutations.
+
+ "uniquePerms" Function:
+
+The "uniquePerms" function initializes a set "s", calls the "solve" function to find unique permutations, and then converts the set into a vector to return the result. Here's a breakdown:
+
+- Parameters:
+  - "vector<int> &arr": The reference to the array whose permutations need to be generated.
+  - "int n": The size of the array.
+
+- The function creates an instance of the "set<vector<int>>" named "s".
+
+- It then calls the "solve" function with the array, starting index "0", and the set "s".
+
+- After generating unique permutations, the set "s" is converted to a vector "ans" using the constructor that takes two iterators.
+
+- The resulting vector of vectors is returned as the final answer.
