@@ -1,0 +1,57 @@
+Distribute candies in a binary tree
+
+Given a binary tree with N nodes, in which each node value represents number of candies present at that node. In one move, one may choose two adjacent nodes and move only one candy from one node to another (the move may be from parent to child, or from child to parent.) 
+The task is to find the number of moves required such that every node has exactly one candy.
+Note that the testcases are framed such that it is always possible to achieve a configuration in which every node has exactly one candy, after some moves.
+
+Example 1:
+
+Input :      3
+           /   \
+          0     0 
+Output : 2
+Explanation: 
+From the root of the tree, we move one 
+candy to its left child, and one candy to
+its right child.
+Example 2:
+
+Input :      0
+           /   \
+          3     0  
+Output : 3
+Explanation : 
+From the left child of the root, we move 
+two candies to the root [taking two moves]. 
+Then, we move one candy from the root of the 
+tree to the right child.
+Your task :
+You don't have to read input or print anything. Your task is to complete the function distributeCandy() which takes the root of the tree as input and returns the number of moves required such that every node has exactly one candy.
+ 
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(height of the tree)
+ 
+Constraints:
+1 <= N <= 104
+0 <= Value of each node <= 104
+
+
+Explanation:
+
+
+1. Base Case:
+   - The function starts with a base case: If the current node ("root") is "NULL" (indicating an empty subtree), it returns "0".
+
+2. Recursive Calls:
+   - The function recursively calls itself for the left and right children of the current node:
+     - "int l = dfs(root->left);": This calculates the total number of candies in the left subtree.
+     - "int r = dfs(root->right);": This calculates the total number of candies in the right subtree.
+
+3. Update Global Variable:
+   - The line "ans += abs(l) + abs(r);" updates the global variable "ans". It adds the absolute values of "l" and "r" to "ans". This represents the total moves required for the current node to distribute excess candies in both the left and right subtrees.
+
+4. Calculate Total Candies for Current Node:
+   - The function then calculates the total number of candies for the current node and returns it:
+     - "return root->key + l + r - 1;": The total candies for the current node are the sum of its original candies ("root->key") and the total candies in its left ("l") and right ("r") subtrees. The subtraction of "1" is done to account for the candy that remains at the current node after distribution.
+
+In summary, the "dfs" function performs a depth-first traversal of the binary tree, calculating the total number of candies in the left and right subtrees for each node. It updates the global variable "ans" with the total moves required for each node, and the function returns the total candies for the current subtree.
