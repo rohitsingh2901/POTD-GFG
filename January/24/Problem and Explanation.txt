@@ -1,0 +1,43 @@
+Check if a given graph is tree or not
+
+You are given an undirected graph of N nodes (numbered from 0 to N-1) and M edges. Return 1 if the graph is a tree, else return 0.
+
+Note: The input graph can have self-loops and multiple edges.
+
+Example 1:
+
+Input:
+N = 4, M = 3
+G = [[0, 1], [1, 2], [1, 3]]
+Output: 
+1
+Explanation: 
+Every node is reachable and the graph has no loops, so it is a tree
+Example 2:
+
+Input:
+N = 4, M = 3
+G = [[0, 1], [1, 2], [2, 0]]
+Output: 
+0
+Explanation: 
+3 is not connected to any node and there is a loop 0->1->2->0, so it is not a tree.
+Your Task:  
+You don't need to read input or print anything. Your task is to complete the function isTree() which takes the integer N (the number nodes in the input graph) and the edges representing the graph as input parameters and returns 1 if the input graph is a tree, else 0.
+
+Expected Time Complexity: O(N+M)
+Expected Auxiliary Space: O(N)
+
+Constraints:
+1 <= N <= 2*105
+0 <= M <= 2*105
+
+
+Explanation:
+
+1. "vector<int>arr[n];": Initializes an array of vectors to represent the adjacency list.
+2. "for(int i=0; i<m; i++)": Populates the adjacency list based on the provided edge information.
+3. "vector<bool>vis(n, 0);": Initializes a vector to mark visited nodes.
+4. "if(dfs(0, -1, vis, arr)==1) return 0;": Initiates DFS traversal from node 0, and if the DFS returns 1, indicating the presence of a cycle, the function returns 0 (indicating that the graph is not a tree).
+5. "for(int i=0; i<n; i++)": Checks if all nodes are visited. If any node is not visited, the function returns 0.
+6. If the function has not returned 0 by this point, it returns 1, indicating that the graph is a tree.
