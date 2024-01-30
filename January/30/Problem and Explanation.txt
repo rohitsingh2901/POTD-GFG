@@ -1,0 +1,50 @@
+LCS of three strings
+
+Given 3 strings A, B and C, the task is to find the length of the longest sub-sequence that is common in all the three given strings.
+
+Example 1:
+
+Input:
+A = "geeks"
+B = "geeksfor", 
+C = "geeksforgeeks"
+Output: 5
+Explanation: 
+"geeks"is the longest common
+subsequence with length 5.
+Example 2:
+
+Input: 
+A = "abcd"
+B = "efgh"
+C = "ijkl"
+Output: 0
+Explanation: 
+There's no subsequence common
+in all the three strings.
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function LCSof3() which takes the strings A, B, C and their lengths n1, n2, n3 as input and returns the length of the longest common subsequence in all the 3 strings.
+
+Expected Time Complexity: O(n1*n2*n3).
+Expected Auxiliary Space: O(n1*n2*n3).
+
+Constraints:
+1 <= n1, n2, n3 <= 20
+Elements of the strings consitutes only of the lower case english alphabets.
+
+
+Explanation:
+
+- "int dp[21][21][21];": This declares a 3D array "dp" of size (21 x 21 x 21) to store the memoization table. The size is chosen to accommodate the constraints (1 <= n1, n2, n3 <= 20).
+
+- "int fun(string A, string B, string C, int i, int j, int k)": This is the recursive function "fun" that calculates the length of the longest common subsequence for substrings of "A", "B", and "C" starting from indices "i", "j", and "k" respectively. It returns the length of the LCS.
+
+- "if(i<0 || j<0 || k<0) return 0;": This is the base case of the recursion. If any of the indices becomes negative, it means one of the strings is exhausted, and hence, the length of the common subsequence is 0.
+
+- "if(dp[i][j][k]!=-1) return dp[i][j][k];": This checks if the result for the current state "(i, j, k)" is already computed and stored in the "dp" array. If so, it returns the precomputed value to avoid redundant computations.
+
+- The next part of the code handles the cases where the characters at indices "i", "j", and "k" match or don't match in the three strings "A", "B", and "C". It recursively explores all possibilities and returns the maximum length of the common subsequence.
+
+- Finally, the "LCSof3" function initializes the "dp" array with "-1" and calls the "fun" function with the correct indices.
+
+This implementation effectively optimizes the recursive approach using memoization, reducing the time complexity from exponential to polynomial. It should work efficiently for the given problem constraints.
