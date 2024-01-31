@@ -1,0 +1,68 @@
+Insert and Search in a Trie
+
+Complete the Insert and Search functions for a Trie Data Structure. 
+
+Insert: Accepts the Trie's root and a string, modifies the root in-place, and returns nothing.
+Search: Takes the Trie's root and a string, returns true if the string is in the Trie, otherwise false.
+Note: To test the correctness of your code, the code-judge will be inserting a list of N strings called into the Trie, and then will search for the string key in the Trie. The code-judge will generate 1 if the key is present in the Trie, else 0.
+
+Example 1:
+
+Input:
+n = 8
+list[] = {the, a, there, answer, any, by, bye, their}
+key = the
+Output: 1
+Explanation: 
+"the" is present in the given set of strings. 
+Example 2:
+
+Input:
+n = 8
+list[] = {the, a, there, answer, any, by, bye, their}
+key = geeks
+Output: 0
+Explanation: 
+"geeks" is not present in the
+given set of strings.
+Your Task:
+You do not have to take any input or print anything. Complete insert and search functions. 
+
+Expected Time Complexity: O(M+|key|)
+Expected Auxiliary Space: O(M)
+Here M = sum of the length of all strings which are present in the list[] 
+
+Constraints:
+1 <= N <= 104
+1 <= length of list[i] <= 30
+All strings will constitute of lowercase alphabets only.
+
+
+Explanation:
+
+1. TrieNode Structure:
+   - Defines a structure "TrieNode".
+   - Contains an array "children" of size 26 to represent each character of the alphabet.
+   - Boolean flag "isLeaf" to indicate if a node represents the end of a word.
+   - Constructor initializes "children" to "nullptr" and "isLeaf" to "false".
+
+2. Solution Class:
+   - Contains two public member functions: "insert" and "search".
+
+3. insert Function:
+   - Inserts a string into the trie.
+   - Takes a pointer to the root of the trie and a string "key".
+   - If "key" is empty, sets the "isLeaf" flag of the current node to "true".
+   - If the child node corresponding to the first character of "key" exists, recursively calls "insert" on that child with the substring starting from the second character of "key".
+   - If the child node does not exist, creates a new child node, assigns it to the corresponding position in the "children" array, and recursively calls "insert" on that child with the substring starting from the second character of "key".
+
+4. search Function:
+   - Searches for a string in the trie.
+   - Takes a pointer to the root of the trie and a string "key".
+   - If "key" is empty and the current node is a leaf node, returns "true", indicating that the string exists in the trie.
+   - If the child node corresponding to the first character of "key" exists, recursively calls "search" on that child with the substring starting from the second character of "key".
+   - If the child node does not exist, returns "false", indicating that the string does not exist in the trie.
+
+5. Usage:
+   - The "insert" function is used to insert strings into the trie.
+   - The "search" function is used to search for strings in the trie.
