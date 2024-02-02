@@ -1,0 +1,46 @@
+Implement Atoi
+
+Given a string, s, the objective is to convert it into integer format without utilizing any built-in functions. If the conversion is not feasible, the function should return -1.
+
+Note: Conversion is feasible only if all characters in the string are numeric or if its first character is '-' and rest are numeric.
+
+Example 1:
+
+Input:
+s = "-123"
+Output: 
+-123
+Explanation:
+It is possible to convert -123 into an integer 
+and is so returned in the form of an integer
+Example 2:
+
+Input:
+s = "21a"
+Output: 
+-1
+Explanation: 
+The output is -1 as, due to the inclusion of 'a',
+the given string cannot be converted to an integer.
+Your Task:
+You do not have to take any input or print anything. Complete the function atoi() which takes a string s as an input parameter and returns an integer value representing the given string. If the conversion is not feasible, the function should return -1.
+
+|s| = length of string str.
+Expected Time Complexity: O( |s| ), 
+Expected Auxiliary Space: O(1)
+
+Constraints:
+1 ≤ |s| ≤ 10
+
+Explanation:
+
+1. The function takes a string "s" as input.
+2. It checks if the input string "s" is empty and returns -1 if it is.
+3. It initializes variables "sign" and "result" to keep track of the sign of the number and the resulting integer value, respectively.
+4. It handles the sign separately by checking if the first character of the string is a minus sign.
+5. It iterates through each character in the modified string "s".
+6. It checks if each character is a digit, returning -1 if it's not.
+7. It converts each character to its corresponding integer value.
+8. It builds the resulting integer by multiplying the current result by 10 and adding the integer value of the current character.
+9. It applies the sign to the final result.
+10. It demonstrates example usage of the function with sample input strings.
