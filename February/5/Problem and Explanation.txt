@@ -1,0 +1,63 @@
+Sorted insert for circular linked list
+
+Given a sorted circular linked list of length n, the task is to insert a new node in this circular list so that it remains a sorted circular linked list.
+
+Example 1:
+
+Input:
+n = 3
+LinkedList = 1->2->4
+(the first and last node is connected, i.e. 4 --> 1)
+data = 2
+Output: 
+1 2 2 4
+Explanation:
+We can add 2 after the second node.
+Example 2:
+
+Input:
+n = 4
+LinkedList = 1->4->7->9
+(the first and last node is connected, i.e. 9 --> 1)
+data = 5
+Output: 
+1 4 5 7 9
+Explanation:
+We can add 5 after the second node.
+Your Task:
+The task is to complete the function sortedInsert() which should insert the new node into the given circular linked list and return the head of the linked list.
+
+Expected Time Complexity: O(n)
+Expected Auxiliary Space: O(1)
+
+Constraints:
+0 <= n <= 105
+
+Explanation:
+
+1. Function Signature:
+    - The function takes two parameters:
+        - `head`: A pointer to the head of the circular linked list.
+        - `data`: The data value to be inserted into the linked list.
+    - It returns a pointer to the head of the modified circular linked list.
+
+2. Creating a New Node:
+    - This line creates a new node with the provided data value.
+
+3. Handling Empty List:
+    - If the list is empty (`head` is NULL), it means the new node will be the only node in the list. So, we point the `next` of the new node to itself and return the new node.
+
+4. Traversal:
+    - We initialize a pointer `current` to traverse the list starting from the head.
+
+5. Case 1: Insertion Before Head:
+    - If the data value to be inserted is less than the data value of the head node, then the new node needs to be inserted before the head.
+    - We traverse the list till the last node (i.e., the node whose `next` pointer points back to the head).
+    - Then, we update the `next` pointer of the last node to point to the new node, and the `next` pointer of the new node to point to the current head.
+    - Finally, we return the new node as the new head.
+
+6. Case 2: Insertion in Middle or End:
+    - If the data value to be inserted is greater than or equal to the data value of the head node, then the new node needs to be inserted in the middle or at the end of the list.
+    - We traverse the list until we find a node whose next node has data greater than or equal to the new data value.
+    - Then, we insert the new node between the current node and its next node.
+    - Finally, we return the head of the modified list.
