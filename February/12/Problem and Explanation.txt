@@ -1,0 +1,52 @@
+Recursive sequence
+
+A function F is defined as follows F(n)= (1) +(2*3) + (4*5*6) ... upto n terms (look at the examples for better clarity). Given an integer n, determine the F(n).
+
+Note: As the answer can be very large, return the answer modulo 109+7.
+
+Example 1:
+
+Input: n = 5
+Output: 365527
+Explanation: 
+F(5) = 1 + 2*3 + 4*5*6 + 7*8*9*10 + 11*12*13*14*15 = 365527.
+Example 2:
+
+Input: n = 7
+Output: 6006997207
+Explanation: 
+F(7) = 1 + 2*3 + 4*5*6 + 7*8*9*10 + 11*12*13*14*15 + 
+16*17*18*19*20*21 + 22*23*24*25*26*27*28 = 6006997207.
+6006997207 % 109+7 = 6997165
+Your Task:
+You do not need to read input or print anything. Your task is to complete the function sequence() which takes an integer n as an input parameter and returns the value of F(n).
+
+Expected Time Complexity: O(n2)
+Expected Space Complexity: O(1)
+
+Constraints:
+1 ≤ n ≤ 103
+
+Explanation:
+
+1. `int MOD = 1e9 + 7;`: This line initializes a constant integer `MOD` with the value \(10^9 + 7\). This value is used to take the modulo operation at every step to avoid integer overflow.
+
+2. `long long sequence(int n) {`: This line defines a function named `sequence` that takes an integer `n` as its parameter and returns a `long long` integer.
+
+3. `long long ans = 0;`: This line initializes a variable `ans` of type `long long` to store the cumulative sum of the sequence.
+
+4. `for (int i = 1; i <= n; i++) {`: This line starts a loop that iterates from `i = 1` to `n`, inclusive, to calculate the terms of the sequence up to `n`.
+
+5. `long long val = 1;`: This line initializes a variable `val` of type `long long` to store the product of consecutive numbers for each term of the sequence.
+
+6. `int num = (i - 1) * i / 2 + 1;`: This line initializes a variable `num` to store the starting number for the current term of the sequence. It calculates the starting number based on the current value of `i`.
+
+7. `for (int j = 0; j < i; j++) {`: This line starts a nested loop that iterates `i` times, representing the number of terms in the current sequence. It calculates the product of consecutive numbers and updates `val` accordingly.
+
+8. `val = (val * num) % MOD;`: This line updates the value of `val` by multiplying it with the current number `num` and taking the modulo operation with `MOD` to prevent integer overflow.
+
+9. `num++;`: This line increments the value of `num` to move to the next consecutive number for the next iteration of the inner loop.
+
+10. `ans = (ans + val) % MOD;`: This line updates the cumulative sum `ans` by adding the current value of `val` and taking the modulo operation with `MOD`.
+
+11. `return ans;`: This line returns the final cumulative sum `ans` as the result of the function.
