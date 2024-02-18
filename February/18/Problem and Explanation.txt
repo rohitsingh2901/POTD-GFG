@@ -1,0 +1,73 @@
+Sum of leaf nodes in BST
+
+Given a Binary Search Tree with n nodes, find the sum of all leaf nodes. BST has the following property (duplicate nodes are possible):
+
+The left subtree of a node contains only nodes with keys less than the node’s key.
+The right subtree of a node contains only nodes with keys greater than or equal to the node’s key.
+Your task is to determine the total sum of the values of the leaf nodes.
+
+Note: Input array arr doesn't represent the actual BST, it represents the order in which the elements will be added into the BST.
+
+Example 1:
+Input:
+n = 6
+arr = {67, 34, 82, 12, 45, 78}
+Output:
+135
+Explanation:
+In first test case, the BST for the given input will be-
+                67
+             /     \
+           34       82
+          /   \    /
+         12   45  78
+
+Hence, the required sum= 12 + 45 + 78 = 135
+
+Example 2:
+Input:
+n = 1
+arr = {45}
+Output:
+45
+Explanation:
+As the root node is a leaf node itself, 
+the required sum will be 45
+Your Task:
+You don't have to take any input or print anything. You are required to complete the function sumOfLeafNodes that takes root node of a BST with n nodes as parameter and returns the sum of leaf nodes. 
+
+Expected Time Complexity: O(n)
+Expected Auxiliary Space: O(1)
+
+Constraints:
+1 <= n <= 104
+1 <= Value of each node <= 105
+
+
+Explanation:
+
+1. `help` function: This function is a recursive helper function that traverses the binary tree and calculates the sum of leaf node values.
+
+    - Parameters:
+        - `root`: A pointer to the current node in the traversal.
+        - `ans`: A reference to an integer variable that stores the sum of leaf node values. The reference allows the function to update the `ans` variable across recursive calls.
+    
+    - Base case:
+        - If `root` is `NULL`, indicating an empty subtree, the function returns without further processing.
+    
+    - Recursive steps:
+        - If the current node (`root`) is a leaf node (i.e., it has no left and right children), the value of the current node (`root->data`) is added to the sum (`ans`).
+        - The function then recursively calls itself for the left subtree (`root->left`) and the right subtree (`root->right`). This recursive call continues the traversal of the tree until all nodes have been visited.
+
+2. `sumOfLeafNodes` function: This function serves as a wrapper function that initializes the sum variable and calls the `help` function to compute the sum of leaf node values.
+
+    - Parameters:
+        - `root`: A pointer to the root of the binary tree.
+
+    - Local variables:
+        - `ans`: An integer variable used to store the sum of leaf node values.
+    
+    - Procedure:
+        - Initialize the `ans` variable to 0.
+        - Call the `help` function with the root of the binary tree (`root`) and the `ans` variable as arguments. This initiates the recursive traversal of the tree to compute the sum of leaf node values.
+        - Return the final value of `ans`, which represents the sum of leaf node values in the binary tree.
