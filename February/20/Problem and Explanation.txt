@@ -1,0 +1,70 @@
+Word Break
+
+Given a string s and a dictionary of n words dictionary, find out if a s can be segmented into a space-separated sequence of dictionary words. Return 1 if it is possible to break the s into a sequence of dictionary words, else return 0. 
+
+Note: From the dictionary dictionary each word can be taken any number of times and in any order.
+
+Example 1:
+
+Input:
+n = 6
+s = "ilike"
+dictionary = { "i", "like", "sam", "sung", "samsung", "mobile"}
+Output:
+1
+Explanation:
+The string can be segmented as "i like".
+Example 2:
+
+Input:
+n = 6
+s = "ilikesamsung"
+dictionary = { "i", "like", "sam", "sung", "samsung", "mobile"}
+Output:
+1
+Explanation:
+The string can be segmented as 
+"i like samsung" or "i like sam sung".
+Your Task:
+Complete wordBreak() function which takes a string and list of strings as a parameter and returns 1 if it is possible to break words, else return 0. You don't need to read any input or print any output, it is done by driver code.
+
+Expected Time Complexity: O(len(s)2)
+Expected Space Complexity: O(len(s))
+
+Constraints:
+1 ≤ n ≤ 12
+1 ≤ len(s) ≤ 1100
+
+
+Explaination:
+
+1. Function Signature: 
+   - The code defines two functions:
+     - `bool help(string s, vector<string> &B, int index)`
+     - `int wordBreak(int n, string s, vector<string> &dictionary)`
+   
+2. Recursive Approach:
+   - The `help` function is a recursive function used to check if a given string `s` can be segmented into words from the provided dictionary `B`.
+   - It takes three parameters:
+     - `s`: The input string.
+     - `B`: The dictionary of words.
+     - `index`: The current index in the string `s`.
+   
+3. Base Case:
+   - The base case of the recursive function is when the current index `index` becomes equal to the length of the string `s`. At this point, it means the entire string has been successfully segmented, so it returns `true`.
+
+4. Looping through Substrings:
+   - The function iterates over the characters of the string `s` starting from the current index.
+   - It forms substrings of `s` starting from `index` and adds characters one by one to a temporary string variable.
+
+5. Dictionary Check:
+   - Within an inner loop, it compares the current substring with each word in the dictionary.
+   - If a match is found, it recursively calls the `help` function with the updated index (incremented by 1).
+   - It uses logical OR (`||`) to accumulate the result of recursive calls. If any recursive call returns `true`, it sets a flag to `true`.
+
+6. Return Result:
+   - Finally, the function returns the accumulated flag, which holds the result of whether it's possible to segment the string `s` using words from the dictionary.
+
+7. Main Function:
+   - The `wordBreak` function simply calls the `help` function and converts the boolean result to `1` or `0` based on the success of segmentation.
+   - The `main` function demonstrates how to use these functions by providing sample input values and printing the result.
