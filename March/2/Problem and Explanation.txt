@@ -1,0 +1,50 @@
+First element to occur k times
+
+Given an array of n integers. Find the first element that occurs atleast k number of times. If no such element exists in the array, then expect the answer to be -1.
+
+Example 1:
+
+Input :
+n = 7, k = 2
+a[] = {1, 7, 4, 3, 4, 8, 7}
+Output :
+4
+Explanation :
+Both 7 and 4 occur 2 times. But 4 is first that occurs twice.
+As at index = 4, 4 has occurred twice whereas 7 appeared twice
+at index 6.
+Example 2:
+
+Input :
+n = 10, k = 3
+a[] = {3, 1, 3, 4, 5, 1, 3, 3, 5, 4}
+Output :
+3
+Explanation :
+Here, 3 is the only number that appeared atleast 3 times in the array.
+Your Task:  
+You don't need to read input or print anything. Your task is to complete the function firstElementKTime() which takes the array a[], its size n, and an integer k as input arguments and returns the required answer. If the answer is not present in the array, return -1.
+
+Expected Time Complexity: O(n).
+Expected Auxiliary Space: O(n).
+
+Constraints:
+1 <= n <= 104
+1 <= k <= 100
+0 <= a[i] <= 200
+
+
+Explaination:
+
+1. The function `firstElementKTime` takes three arguments:
+   - `n`: An integer representing the size of the array.
+   - `k`: An integer representing the minimum frequency required for an element.
+   - `a[]`: An array of integers.
+2. Inside the function, an unordered_map `m` is declared. This map will store the frequency of each element in the array.
+3. The function iterates through the array `a[]` using a for loop.
+4. For each element `a[i]` in the array, the frequency of that element is incremented in the unordered_map `m`.
+5. After incrementing the frequency of `a[i]`, the code checks if the frequency of `a[i]` is greater than or equal to `k`.
+6. If the frequency of `a[i]` is greater than or equal to `k`, the function returns `a[i]`, as it is the first element that occurs at least `k` times in the array.
+7. If no such element is found after iterating through the entire array, the function returns -1, indicating that there is no element occurring at least `k` times in the array.
+8. The time complexity of this function is O(n), where n is the size of the input array. This is because the function iterates through the array once.
+9. The auxiliary space complexity of this function is also O(n), as the unordered_map `m` may store up to n elements in the worst case scenario, where all elements in the array are distinct.
