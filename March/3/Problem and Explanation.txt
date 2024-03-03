@@ -1,0 +1,47 @@
+Largest Number formed from an Array
+
+Given an array of strings arr[] of length n representing non-negative integers, arrange them in a manner, such that, after concatanating them in order, it results in the largest possible number. Since the result may be very large, return it as a string.
+
+Example 1:
+
+Input: 
+n = 5
+arr[] =  {"3", "30", "34", "5", "9"}
+Output: "9534330"
+Explanation: 
+Given numbers are  {"3", "30", "34", "5", "9"}, 
+the arrangement "9534330" gives the largest value.
+Example 2:
+
+Input: 
+n = 4
+arr[] =  {"54", "546", "548", "60"}
+Output: "6054854654"
+Explanation: 
+Given numbers are {"54", "546", "548", "60"}, the 
+arrangement "6054854654" gives the largest value.
+Your Task:  
+You don't need to read input or print anything. Your task is to complete the function printLargest() which takes the array of strings arr[] as a parameter and returns a string denoting the answer.
+
+Expected Time Complexity: O(n*log(n) ).
+Expected Auxiliary Space: O(n).
+
+Constraints:
+1 ≤ n ≤ 105
+0 ≤ arr[i] ≤ 1018
+Sum of all the elements of the array is greater than 0.
+
+
+Explaination:
+
+1. Custom Comparison Function (`cmp`):
+    - You've defined a static boolean function `cmp` that takes two string arguments `a` and `b`.
+    - This function returns `true` if concatenating `a` with `b` results in a string greater than concatenating `b` with `a`. Otherwise, it returns `false`.
+    - This comparison function will be used by the `sort` function to determine the order of strings in the array.
+
+2. `printLargest` Function:
+    - It takes two parameters: an integer `n` (which is not used in the function) and a reference to a vector of strings `arr`.
+    - The function sorts the array `arr` using the custom comparison function `cmp`. This will sort the strings in such a way that when concatenated, they form the largest possible number.
+    - Then, it initializes an empty string `ans` to store the final concatenated result.
+    - It iterates through the sorted array `arr` and appends each string to the `ans` string.
+    - Finally, it returns the concatenated string `ans`, which represents the largest possible number formed from the array.
