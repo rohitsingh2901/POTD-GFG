@@ -1,0 +1,47 @@
+Swap the array elements
+
+Given an array arr of n positive integers. The task is to swap every ith element of the array with (i+2)th element.
+
+Example 1:
+
+Input:
+n = 3
+arr[] = 1 2 3
+Output:
+3 2 1
+Explanation:
+Swapping 1 and 3, makes the array 3 2 1. There is only one swap possible in this array.
+Example 2:
+
+Input:
+n = 5
+arr[] = 1 2 3 4 5
+Output:
+3 4 5 2 1
+Explanation:
+Swapping 1 and 3, makes the array 3 2 1 4 5.
+Now, swapping 2 and 4, makes the array 3 4 1 2 5. 
+Again,swapping 1 and 5, makes the array 3 4 5 2 1.
+Your Task:
+Your task is to complete the function swapElements(), which should swap each ith element with (i+2)th element.
+
+Expected Time Complexity: O(n)
+Expected Auxilary Space: O(1)
+
+Constraints:
+1 <= n <= 106
+0 <= arri <= 109
+
+Explanation:
+
+1.`int i = 0;`: This line initializes an integer variable `i` with a value of 0. This variable is used to track the current index in the array `arr`.
+
+2. `int j = i + 2;`: This line initializes another integer variable `j` with a value of `i + 2`. This `j` represents the index to which the element at index `i` will be swapped.
+
+3. `while (j < n) { ... }`: This line starts a while loop that continues as long as `j` is less than `n`, the length of the array `arr`. This loop ensures that swaps are performed only within the bounds of the array.
+
+4. `swap(arr[i], arr[j]);`: This line calls the `swap` function to swap the elements at indices `i` and `j` of the array `arr`. It swaps the current element with the element two positions ahead.
+
+5. `i++;`: This line increments the value of `i` by 1, moving to the next index in the array.
+
+6. `j++;`: This line also increments the value of `j` by 1, ensuring that it is always two positions ahead of `i`.
