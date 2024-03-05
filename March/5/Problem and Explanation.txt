@@ -1,0 +1,24 @@
+Maximum Index
+
+Given an array a of n positive integers. The task is to find the maximum of j - i subjected to the constraint of a[i] < a[j] and i < j.
+
+Example 1:
+
+Input:
+n = 2
+a[] = {1, 10}
+Output:
+1
+
+
+Explanation:
+
+1. Initialization: Initialize two vectors `leftmin` and `rightmax` to store the minimum elements on the left and maximum elements on the right respectively. Also, initialize variables `maxi` and `mini` to keep track of the maximum and minimum elements encountered so far.
+   
+2. Right-to-Left Traversal: Traverse the array from right to left. Update `maxi` with the maximum of the current element and `maxi`. Store `maxi` at index `i` in the `rightmax` vector.
+
+3. Left-to-Right Traversal: Traverse the array from left to right. Update `mini` with the minimum of the current element and `mini`. Store `mini` at index `i` in the `leftmin` vector.
+
+4. Calculate Maximum Index Difference: Initialize `ans` to `-1`. Traverse both vectors simultaneously using pointers `i` and `j`. At each step, check if the maximum element encountered from the right (`rightmax[i]`) is greater than or equal to the minimum element encountered from the left (`leftmin[j]`). If true, update `ans` with the maximum index difference (`i - j`) and increment `j`. Otherwise, increment `i`.
+
+5. Return: Return the maximum index difference (`ans`).
