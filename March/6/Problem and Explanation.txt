@@ -1,0 +1,54 @@
+Search Pattern (Rabin-Karp Algorithm)
+
+Given two strings, one is a text string and other is a pattern string. The task is to print the indexes of all the occurences of pattern string in the text string. For printing, Starting Index of a string should be taken as 1. The strings will only contain lowercase English alphabets ('a' to 'z').
+
+Example 1:
+
+Input: 
+text = "birthdayboy"
+pattern = "birth"
+Output: 
+[1]
+Explanation: 
+The string "birth" occurs at index 1 in text.
+Example 2:
+
+Input:
+text = "geeksforgeeks"
+pattern = "geek"
+Output: 
+[1, 9]
+Explanation: 
+The string "geek" occurs twice in text, one starts are index 1 and the other at index 9.
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function search() which takes the string text and the string pattern as input and returns an array denoting the start indices (1-based) of substring pattern in the string text. 
+
+Expected Time Complexity: O(|text| + |pattern|).
+Expected Auxiliary Space: O(1).
+
+Constraints:
+1<=|text|<=5*105
+1<=|pattern|<=|text|
+
+Explanation:
+
+1. Function Signature: 
+    - The function `search` takes two parameters: `pattern` of type `string` and `text` of type `string`.
+    - It returns a vector of integers containing the indices where the pattern is found in the text.
+
+2. Initialization:
+    - `n` is initialized to the size of the `text` string, which represents the length of the text.
+    - `m` is initialized to the size of the `pattern` string, which represents the length of the pattern.
+    - `res` is initialized as an empty vector of integers. This vector will store the indices where the pattern is found in the text.
+
+3. Loop Over Text:
+    - The for loop iterates over the text from index 0 to `n - m`. This ensures that the substring `text.substr(i, m)` remains within the bounds of the text.
+    - The loop index `i` represents the starting index of the current substring being examined.
+
+4. Pattern Matching:
+    - Inside the loop, the code checks if the substring of `text` starting from index `i` and of length `m` is equal to the `pattern`.
+    - This is done using the `substr` function which extracts a substring from the `text` string starting at index `i` and of length `m`.
+    - If the extracted substring matches the `pattern`, the index `i + 1` (1-based index) is added to the `res` vector.
+
+5. Return:
+    - After the loop completes, the function returns the `res` vector containing the indices where the pattern was found in the text.
