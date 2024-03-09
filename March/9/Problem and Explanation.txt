@@ -1,0 +1,58 @@
+Find the N-th character
+
+Given a binary string s. Perform r iterations on string s, where in each iteration 0 becomes 01 and 1 becomes 10. Find the nth character (considering 0 based indexing) of the string after performing these r iterations (see examples for better understanding).
+
+Example 1:
+
+Input:
+s = "1100"
+r = 2
+n = 3
+Output:
+1
+Explanation: 
+After 1st iteration s becomes "10100101".
+After 2nd iteration s becomes "1001100101100110".
+Now, we can clearly see that the character at 3rd index is 1, and so the output.
+Example 2:
+
+Input:
+s = "1010"
+r = 1
+n = 2
+Output:
+0
+Explanation : 
+After 1st iteration s becomes "10011001".
+Now, we can clearly see that the character at 2nd index is 0, and so the output.
+Your task:
+You don't need to read input or print anything. Your task is to complete the function nthCharacter() which takes the string s and integers r and n as input parameters and returns the n-th character of the string after performing r operations on s.
+ 
+Expected Time Complexity: O(r*|s|)
+Expected Auxilary Space: O(|s|)
+ 
+Constraints:
+1 ≤ |s| ≤ 103
+1 ≤ r ≤ 20
+0 ≤ n < |s|
+
+
+Explanation:
+
+1. The function nthCharacter takes three parameters: s (the input binary string), r (the number of iterations to perform), and n (the index of the character to return).
+
+2. It initializes a string t with the original value of s to keep track of the original string for reference.
+
+3. Inside the while loop, which runs r times:
+
+   a. It initializes an empty string str to store the transformed string for the current iteration.
+
+   b. It iterates over each character of the string s.
+
+   c. For each character, it checks if it is '1' or '0', and appends the corresponding transformation ('10' or '01') to the string str.
+
+   d. It checks if the length of the string str is greater than or equal to the length of the original string t. If so, it breaks out of the loop to avoid unnecessary transformations beyond the length of the original string.
+
+   e. After processing all characters of s, it updates s with the transformed string str for the next iteration.
+
+4. Finally, it returns the n-th character of the final transformed string s.
