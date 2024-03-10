@@ -1,0 +1,41 @@
+Remove all duplicates from a given string
+
+Given a string str which may contain lowercase and uppercase characters. The task is to remove all duplicate characters from the string and find the resultant string. The order of remaining characters in the output should be same as in the original string.
+
+Example 1:
+
+Input:
+str = "geEksforGEeks"
+Output: 
+"geEksforG"
+Explanation: 
+After removing duplicate characters such as E, e, k, s, we have string as "geEksforG".
+Example 2:
+
+Input:
+str = "HaPpyNewYear"
+Output: 
+"HaPpyNewYr"
+Explanation: 
+After removing duplicate characters such as e, a, we have string as "HaPpyNewYr".
+Your Task:
+Complete the function removeDuplicates() which takes a string str, as input parameters and returns a string denoting the answer. You don't have to print answer or take inputs.
+
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(N)
+
+Constraints:
+1 ≤ N ≤ 10^5
+String contains uppercase and lowercase english letters
+
+Explanation:
+
+1. Initialization: The code initializes an unordered map m to store characters and their frequencies.
+2. Counting Frequencies: It iterates through the input string str and counts the frequencies of each character, storing them in the map m.
+3. Reverse Iteration: The code then iterates through the string str in reverse order.
+4. Removing Duplicates: For each character encountered during the reverse iteration, if its frequency is greater than 1 (indicating a duplicate), it decrements its frequency in the map. Otherwise, it adds the character to the result string ans.
+5. Reversing the Result: After iterating through the string in reverse order, the result string ans is reversed to obtain the correct order of characters.
+6. Returning the Result: Finally, the function returns the resulting string ans, which contains the input string with duplicates removed while maintaining the order of remaining characters.
+
+- Time Complexity: O(N), where N is the length of the input string.
+- Space Complexity: O(N), where N is the length of the input string.
