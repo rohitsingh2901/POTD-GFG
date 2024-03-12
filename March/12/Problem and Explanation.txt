@@ -1,0 +1,53 @@
+Generalised Fibonacci numbers
+
+Consider the generalized Fibonacci number g, which is dependent on a, b and c as follows :-
+g(1) = 1, g(2) = 1. For any other number n, g(n) = a*g(n-1) + b*g(n-2) + c.
+
+For a given value of m, determine g(n)%m.
+
+Example 1:
+
+Input:
+a = 3
+b = 3
+c = 3
+n = 3
+m = 5
+Output:
+4
+Explanation:
+g(1) = 1 and g(2) = 1 
+g(3) = 3*g(2) + 3*g(1) + 3 = 3*1 + 3*1 + 3 = 9
+We need to return answer modulo 5, so 9%5 = 4, is the answer.
+Example 2:
+
+Input:
+a = 2
+b = 2
+c = 2
+n = 4
+m = 100
+Output:
+16
+Explanation:
+g(1) = 1 and g(2) = 1
+g(3) = 2*g(2) + 2*g(1) + 2 = 2*1 + 2*1 + 2 = 6
+g(4) = 2*g(3) + 2*g(2) + 2  = 2*6 + 2*1 + 2 = 16
+We need to return answer modulo 100, so 16%100 = 16, is the answer.
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function genFibNum() which takes 5 Integers a, b, c, n, and m as input and returns g(n)%m.
+
+Expected Time Complexity: O( log(n) ).
+Expected Auxiliary Space: O(1).
+
+Constraints:
+1 <= a, b, c, n, m <= 10^9+7
+
+Explanation:
+
+1. The multiply function takes two matrices A and B along with the modulo value m and returns the result of multiplying these matrices modulo m.
+
+2. The power function calculates the power of a matrix mat raised to the power R modulo m using recursive matrix exponentiation. It first checks if R is 1, in which case it returns the matrix as is. Otherwise, it recursively calculates the matrix to the power R/2, then squares it, and if R is odd, it multiplies the result by the original matrix. Finally, it returns the resulting matrix.
+
+3. The genFibNum function calculates the generalized Fibonacci number g(n) modulo m for a given set of parameters a, b, c, n, and m. It first handles the base cases when n is 1 or 2. Then it constructs the matrix representing the recurrence relation for generalized Fibonacci numbers. It calls the power function to calculate the power of this matrix raised to the power n-2 modulo m. Finally, it returns the sum of the first row of the resulting matrix modulo m, which represents g(n) modulo m.
+
