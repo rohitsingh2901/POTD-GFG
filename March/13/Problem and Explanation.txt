@@ -1,0 +1,80 @@
+Print matrix in diagonal pattern
+
+Given a square matrix mat[][] of n*n size, the task is to determine the diagonal pattern which is a linear arrangement of the elements of the matrix as depicted in the following example:
+
+
+
+Example 1:
+
+Input:
+n = 3
+mat[][] = {{1, 2, 3},
+           {4, 5, 6},
+           {7, 8, 9}}
+Output: {1, 2, 4, 7, 5, 3, 6, 8, 9}
+Explaination:
+Starting from (0, 0): 1,
+Move to the right to (0, 1): 2,
+Move diagonally down to (1, 0): 4,
+Move diagonally down to (2, 0): 7,
+Move diagonally up to (1, 1): 5,
+Move diagonally up to (0, 2): 3,
+Move to the right to (1, 2): 6,
+Move diagonally up to (2, 1): 8,
+Move diagonally up to (2, 2): 9
+There for the output is {1, 2, 4, 7, 5, 3, 6, 8, 9}.
+Example 2:
+
+Input:
+n = 2
+mat[][] = {{1, 2},
+           {3, 4}}
+Output: {1, 2, 3, 4}
+Explaination:
+Starting from (0, 0): 1,
+Move to the right to (0, 1): 2,
+Move diagonally down to (1, 0): 3,
+Move to the right to (1, 1): 4
+There for the output is {1, 2, 3, 4}.
+Your Task:
+You only need to implement the given function matrixDiagonally() which takes a matrix mat[][] of size n*n as an input and returns a list of integers containing the matrix diagonally. Do not read input, instead use the arguments given in the function.
+
+Expected Time Complexity: O(n*n).
+Expected Auxiliary Space: O(1).
+Constraints:
+1 <= n <= 100
+-100 <= elements of matrix <= 100
+
+
+
+Explanation:
+
+1. It initializes variables n, row, and col. n represents the size of the matrix (since it's a square matrix, mat.size() can be assumed to represent the size of one dimension). row and col are used to track the current position while traversing the matrix.
+2. It initializes an empty vector ans to store the elements in the diagonal pattern.
+3. It initializes a boolean variable isReverse to control whether the elements need to be reversed before inserting into ans.
+4. It enters a while loop that continues until col is less than n.
+5. Within the loop, it initializes variables i and j to row and col respectively. These variables are used to traverse the matrix diagonally.
+6. It initializes an empty vector temp to store the elements in the current diagonal.
+7. It enters another while loop that continues until i, j, n, and n satisfy certain conditions (ensuring that the traversal stays within the bounds of the matrix).
+8. Within this inner loop, it appends the element mat[i][j] to the temp vector and adjusts i and j to move diagonally.
+9. After exiting the inner loop, it checks whether isReverse is true. If it is, it reverses the temp vector.
+10. It appends the elements of temp to the ans vector.
+11. Depending on the value of row, it adjusts row and col to move to the next diagonal in the matrix.
+12. It toggles the value of isReverse for the next diagonal.
+13. Finally, it returns the ans vector containing the elements in the diagonal pattern.
+
+Let's analyze the time and space complexity of this approach:
+
+Time Complexity:
+- The outer while loop runs `n` times, where `n` is the size of one dimension of the square matrix.
+- Inside the outer while loop, there is an inner while loop that traverses diagonally through the matrix. In the worst case, this inner loop traverses all the elements in the matrix, resulting in a time complexity of O(n^2) for each iteration of the outer loop.
+- Therefore, the overall time complexity of your code is O(n^3).
+
+Space Complexity:
+- The space complexity is primarily determined by the additional space used for the `ans` vector and the `temp` vector.
+- The `ans` vector stores all the elements of the matrix in the diagonal pattern, which could be up to `n^2` elements in the worst case.
+- The `temp` vector stores the elements of each diagonal, which could also be up to `n^2` elements in the worst case.
+- Additionally, there are some constant extra variables and the input matrix itself.
+- Therefore, the overall space complexity is O(n^2).
+
+In summary, the time complexity of your code is O(n^3), and the space complexity is O(n^2).
