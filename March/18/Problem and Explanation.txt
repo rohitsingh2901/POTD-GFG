@@ -1,0 +1,51 @@
+Level order traversal
+
+Given a root of a binary tree with n nodes, find its level order traversal.
+Level order traversal of a tree is breadth-first traversal for the tree.
+
+Example 1:
+
+Input:
+    1
+  /   \ 
+ 3     2
+Output:
+1 3 2
+Example 2:
+
+Input:
+        10
+     /      \
+    20       30
+  /   \
+ 40   60
+Output:
+10 20 30 40 60
+Your Task:
+You don't have to take any input. Complete the function levelOrder() that takes the root node as input parameter and returns a list of integers containing the level order traversal of the given Binary Tree.
+
+Expected Time Complexity: O(n)
+Expected Auxiliary Space: O(n)
+
+Constraints:
+1 ≤ n ≤ 10^5
+0 ≤ Data of a node ≤ 10^9
+
+
+Explanation:
+
+- The function takes the root node of the binary tree as input and returns the level order traversal as a vector of integers.
+- It initializes an empty vector `ans` to store the traversal and a queue `q` to perform BFS traversal.
+- If the root is NULL, it returns an empty traversal.
+- It pushes the root node into the queue to start the BFS traversal.
+- It enters a loop that continues until the queue becomes empty.
+- Within the loop:
+  - It gets the size of the current level of the tree and iterates over it.
+  - For each node in the current level:
+    - It dequeues the front node from the queue.
+    - It pushes the data of the current node into the traversal result vector.
+    - If the current node has left and right children, it adds them to the queue.
+- After traversing all levels, it returns the level order traversal vector.
+
+Time complexity = O(n)
+Space complexity = O(n)
