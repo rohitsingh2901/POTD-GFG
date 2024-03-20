@@ -1,0 +1,90 @@
+Sum of nodes on the longest path from root to leaf node
+
+Given a binary tree having n nodes. Find the sum of all nodes on the longest path from root to any leaf node. If two or more paths compete for the longest path, then the path having maximum sum of nodes will be considered.
+
+Example 1:
+
+Input: 
+        4        
+       /  \       
+      2   5      
+     / \   /  \     
+    7  1 2  3    
+      /
+     6
+Output: 
+13
+Explanation:
+        4        
+       /  \       
+      2   5      
+     / \   /  \     
+    7  1 2  3 
+      /
+     6
+The highlighted nodes (4, 2, 1, 6) above are part of the longest root to leaf path having sum = (4 + 2 + 1 + 6) = 13
+Example 2:
+
+Input: 
+          1
+        /   \
+       2    3
+      / \    /  \
+     4   5 6   7
+Output: 
+11
+Explanation:
+Use path 1->3->7, with sum 11.
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function sumOfLongRootToLeafPath() which takes root node of the tree as input parameter and returns an integer denoting the sum of the longest root to leaf path of the tree.
+
+Expected Time Complexity: O(n)
+Expected Auxiliary Space: O(n)
+
+Constraints:
+1 <= n <= 10^5
+0 <= data of each node <= 10^4
+
+
+Explanation:
+
+1. A queue q is initialized to perform BFS traversal of the tree. Each element of the queue is a pair consisting of:
+   - An integer representing the current depth of the node in the tree.
+   - A pair consisting of:
+     - A pointer to the node (Node*).
+     - An integer representing the sum of the nodes from the root to the current node.
+
+2. The initial element pushed into the queue represents the root node along with its depth and value.
+
+3. A variable ans is initialized to keep track of the pair representing the node with the longest path from the root encountered so far. The pair consists of:
+   - An integer representing the depth of the node.
+   - A pair consisting of:
+     - A pointer to the node (Node*).
+     - An integer representing the sum of the nodes from the root to the current node.
+
+4. The BFS traversal continues until the queue becomes empty.
+
+5. During each iteration, the front element of the queue is popped and stored in the variable temp.
+
+6. The code compares the depth (temp.first) and the sum of nodes (temp.second.second) of the current node (temp) with the values stored in ans. If the depth or the sum of nodes of temp is greater than those of ans, ans is updated to temp.
+
+7. If the current node has a right child, a new element representing the right child along with its depth and the updated sum of nodes is pushed into the queue.
+
+8. If the current node has a left child, a new element representing the left child along with its depth and the updated sum of nodes is pushed into the queue.
+
+9. Finally, after the BFS traversal is completed, the function returns the sum of nodes (ans.second.second) on the longest path from the root to a leaf node.
+
+
+
+Time Complexity:
+- BFS Traversal: In the worst case, each node in the binary tree is visited once. Since we're using a queue for BFS traversal, each node is enqueued and dequeued once. Therefore, the time complexity of BFS traversal is O(n), where n is the number of nodes in the binary tree.
+
+Overall, the time complexity of the provided code is O(n), where n is the number of nodes in the binary tree.
+
+Space Complexity:
+- Queue: In the worst case, the queue may contain all the nodes of the binary tree if the tree is completely balanced. This can happen at the last level of a complete binary tree. Therefore, the space complexity of the queue is O(n).
+- Variables: The additional space used by variables such as ans, temp, and the integers stored in them is constant relative to the number of nodes in the tree. Hence, their contribution to the space complexity can be considered negligible.
+
+Overall, the space complexity of the provided code is O(n), where n is the number of nodes in the binary tree.
+
+So, the space complexity is O(n), and the time complexity is also O(n). 
