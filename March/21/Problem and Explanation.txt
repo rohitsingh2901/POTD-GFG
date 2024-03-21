@@ -1,0 +1,64 @@
+ZigZag Tree Traversal
+Given a binary tree with n nodes. Find the zig-zag level order traversal of the binary tree.
+
+Example 1:
+
+Input:
+        1
+      /   \
+     2    3
+    / \    /   \
+   4   5 6   7
+Output:
+1 3 2 4 5 6 7
+Example 2:
+
+Input:
+           7
+        /     \
+       9      7
+     /  \      /   
+    8   8  6     
+   /  \
+  10  9 
+Output:
+7 7 9 8 8 6 9 10 
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function zigZagTraversal() which takes the root node of the Binary Tree as its input and returns a list containing the node values as they appear in the zig-zag level-order traversal of the tree.
+
+Expected Time Complexity: O(n).
+Expected Auxiliary Space: O(n).
+
+Constraints:
+1 <= n <= 10^5
+
+Explanation:
+
+1. It starts by creating an empty queue and pushes the root node into the queue.
+2. It uses a 2D vector temp to store the nodes at each level. 
+3. It uses a boolean variable flag to indicate the direction of traversal.
+4. It iterates through the nodes in the queue level by level:
+   - For each level, it creates a vector v to store the node values.
+   - It pops nodes from the queue and adds their values to the vector v based on the traversal direction (flag).
+   - It enqueues the child nodes of the popped node into the queue.
+   - After processing all nodes at the current level, it toggles the flag to change the traversal direction for the next level.
+   - It stores the vector v containing node values for the current level into the 2D vector temp.
+5. After traversing all levels, it flattens the 2D vector temp into a 1D vector ans.
+6. Finally, it returns the 1D vector ans containing the zigzag level order traversal of the binary tree.
+
+
+Time Complexity:
+- Enqueuing and dequeuing nodes from the queue takes O(1) time.
+- We visit each node once during the traversal.
+- Therefore, the time complexity is O(n), where n is the number of nodes in the binary tree.
+
+Space Complexity:
+- We use a queue to perform level-order traversal. The maximum number of nodes that can be present at any level of the tree is the number of nodes in the last level, which is approximately n/2 in the worst case for a binary tree.
+- Additionally, we use a 2D vector `temp` to store the node values at each level.
+- The space required for the queue is O(n/2) in the worst case, and the space required for the 2D vector `temp` is also O(n) since it stores all node values.
+- Thus, the overall space complexity is O(n).
+
+In summary:
+- Time Complexity: O(n)
+- Space Complexity: O(n)
+
