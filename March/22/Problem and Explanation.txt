@@ -1,0 +1,81 @@
+Diagonal sum in binary tree
+
+Consider Red lines of slope -1 passing between nodes (in following diagram). The diagonal sum in a binary tree is the sum of all node datas lying between these lines. Given a Binary Tree of size n, print all diagonal sums.
+
+For the following input tree, output should be 9, 19, 42.
+9 is sum of 1, 3 and 5.
+19 is sum of 2, 6, 4 and 7.
+42 is sum of 9, 10, 11 and 12.
+
+DiagonalSum
+
+Example 1:
+
+Input:
+         4
+       /   \
+      1     3
+           /
+          3
+Output: 
+7 4 
+Example 2:
+
+Input:
+           10
+         /    \
+        8      2
+       / \    /
+      3   5  2
+Output: 
+12 15 3 
+Your Task:
+You don't need to take input. Just complete the function diagonalSum() that takes root node of the tree as parameter and returns an array containing the diagonal sums for every diagonal present in the tree with slope -1.
+
+Expected Time Complexity: O(nlogn).
+Expected Auxiliary Space: O(n).
+
+Constraints:
+1 <= n <= 10^5
+0 <= data of each node <= 10^4
+
+Explanation:
+
+1. 'Initialization': 
+   - Initialize an empty vector 'ans' to store the diagonal sums.
+   - Check if the root of the binary tree is null. If it is, return the empty 'ans' vector.
+
+2. 'BFS Traversal':
+   - Create a queue to perform level-order traversal of the binary tree.
+   - Push the root node of the binary tree into the queue.
+
+3. 'Diagonal Sum Calculation':
+   - While the queue is not empty, perform the following steps:
+     - Initialize variables 'temp' (for temporarily storing nodes), 'sum' (for calculating the sum of nodes on the diagonal), and 'n' (for storing the size of the current level).
+     - Iterate through each node of the current level:
+       - Pop a node 'temp' from the front of the queue.
+       - Traverse diagonally to the right from 'temp', summing up the values of nodes encountered along the diagonal.
+       - Enqueue the left child of 'temp' if it exists.
+     - After processing all nodes on the current level, push the calculated sum onto the 'ans' vector.
+
+4. 'Return Result':
+   - Once all levels of the binary tree are traversed and diagonal sums are computed, return the 'ans' vector containing the diagonal sums.
+
+
+
+
+Time Complexity:
+- The code uses a level-order traversal (BFS) to traverse each level of the binary tree.
+- Within each level, it iterates through each node to calculate the sum of nodes lying on the diagonal.
+- The outer while loop runs until all levels are traversed, and the inner for loop runs for each node in the level.
+- Inside the inner loop, there's a while loop that traverses the diagonal nodes.
+- Therefore, the time complexity is O(n), where n is the number of nodes in the binary tree.
+
+Space Complexity:
+- The space complexity mainly depends on the queue used for the BFS traversal.
+- At any given time, the queue can contain at most one level of the binary tree, which can have a maximum of O(n/2) nodes (in the case of a completely unbalanced tree).
+- Additionally, the code uses some constant space for variables like 'temp', 'sum', and 'n'.
+- Therefore, the space complexity is O(n/2), which simplifies to O(n) in terms of big O notation.
+
+Overall, the time complexity of your code is O(n), and the space complexity is O(n).
+
